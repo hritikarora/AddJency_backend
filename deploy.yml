@@ -1,10 +1,10 @@
 ---
-- name: Pull and Run docker image of hritik97/AddJency_backend
+- name: Pull and Run docker image of hritik97/addjency_backend
   hosts: all
   tasks:
-    - name: Pull AddJency_backend
+    - name: Pull addjency_backend
       docker_image:
-        name: AddJency_backend
+        name: addjency_backend
         source: pull
 
     - name: Pull MySQl image
