@@ -1,0 +1,12 @@
+---
+- name: Pull and Run docker image of hritik97/AddJency_backend
+  hosts: all
+  tasks:
+    - name: Pull AddJency_backend
+      docker_image:
+        name: AddJency_backend
+        source: pull
+
+    - name: Pull MySQl image
+      docker_image:
+        name: mysql:5.7
