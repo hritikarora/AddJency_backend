@@ -4,7 +4,7 @@
   tasks:
     - name: Pull addjency_backend
       docker_image:
-        name: addjency_backend
+        name: hritik97/addjency_backend
         source: pull
 
     - name: Pull MySQl image
