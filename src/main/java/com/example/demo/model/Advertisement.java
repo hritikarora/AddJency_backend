@@ -27,7 +27,7 @@ public class Advertisement {
 	private String desc;
 
 	@Column(name="adDate",nullable=false)
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy",timezone="UTC")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd",timezone="UTC")
     // @Temporal(TemporalType.DATE)
 	private Date adDate;
 

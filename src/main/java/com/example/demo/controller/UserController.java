@@ -86,4 +86,9 @@ public class UserController {
 		return myList;
 	}
 		
+	@GetMapping("/companyname") 
+	public List<String> findDistinctCompanyName()
+	{ 
+		return userRepository.findDistinctCompanyName(); 
+	} 
 }
