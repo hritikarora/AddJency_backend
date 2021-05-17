@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" monitorInterval="30">
-
-    <Properties>
-        <Property name="LOG_PATTERN">
-            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
-        </Property>
-    </Properties>
+<Configuration status="warn">
     
     <Appenders>
-        
-        <!-- <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${LOG_PATTERN}"/>
-        </Console> -->
-        
-        <!-- Rolling File Appender -->
-        
-        <RollingFile name="FileAppender" fileName="Addjency_logs/addjency.log" 
-            filePattern="logs/addjency-%d{yyyy-MM-dd}-%i.log">
+        <RollingFile name="fileLogger" fileName="app-info.log" filePattern="app-info-%d{yyyy-MM-dd}.log">
             <PatternLayout>
-            <Pattern>${LOG_PATTERN}</Pattern>
+                <pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n</pattern>
             </PatternLayout>
             <Policies>
-            <SizeBasedTriggeringPolicy size="10MB" />
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
         </RollingFile>
-    
+ 
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout   pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n" />
+        </Console>
     </Appenders>
-    
     <Loggers>
-
-        <Root level="info">
-            <AppenderRef ref="ConsoleAppender" />
-            <AppenderRef ref="FileAppender"/>
+        <Logger name="com.example.demo" level="info" additivity="true">
+            <appender-ref ref="fileLogger" level="info" />
+        </Logger>
+        <Root level="debug" additivity="false">
+            <appender-ref ref="console" />
         </Root>
     </Loggers>
-
 </Configuration>
